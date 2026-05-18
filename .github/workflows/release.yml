@@ -58,7 +58,7 @@ jobs:
           echo "Tag: $TAG_NAME"
           echo "Version: $VERSION"
           
-          START=$(grep -n "^### \[$VERSION" CHANGELOG.md | head -1 | cut -d: -f1)
+          START=$(grep -n "^## \[$VERSION" CHANGELOG.md | head -1 | cut -d: -f1)
           echo "Start line: $START"
           
           if [ -z "$START" ]; then
@@ -67,7 +67,7 @@ jobs:
             exit 0
           fi
           
-          END=$(sed -n "$((START+1)),$ p" CHANGELOG.md | grep -n "^### \[" | head -1 | cut -d: -f1)
+          END=$(sed -n "$((START+1)),$ p" CHANGELOG.md | grep -n "^## \[" | head -1 | cut -d: -f1)
           
           if [ -z "$END" ]; then
             END=100
