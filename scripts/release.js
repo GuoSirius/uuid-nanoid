@@ -5,17 +5,31 @@ const fs = require('fs');
 const prompt = inquirer.createPromptModule();
 
 function runCommand(cmd, args = [], options = {}) {
-  const result = spawnSync(cmd, args, { stdio: 'inherit', ...options });
-  return result.status === 0;
+  console.log(`   执行: ${cmd} ${args.join(' ')}`);
+  
+  const result = spawnSync(cmd, args, { 
+    stdio: 'inherit', 
+    shell: true,
+    ...options 
+  });
+  
+  if (result.status !== 0) {
+    console.error(`\n❌ 命令执行失败，退出码: ${result.status}`);
+    if (result.error) {
+      console.error('系统错误:', result.error.message);
+    }
+    return false;
+  }
+  return true;
 }
 
 function runCommandSilent(cmd, args = [], options = {}) {
-  const result = spawnSync(cmd, args, { encoding: 'utf-8', ...options });
+  const result = spawnSync(cmd, args, { encoding: 'utf-8', shell: true, ...options });
   return result;
 }
 
 function checkUncommittedChanges() {
-  const result = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf-8' });
+  const result = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf-8', shell: true });
   return result.stdout.trim() !== '';
 }
 
@@ -122,14 +136,12 @@ async function main() {
   }
 
   console.log('\n📦 执行 standard-version...');
-  console.log(`   命令: npx ${args.join(' ')}`);
   if (!runCommand('npx', args)) {
     console.error('❌ standard-version 执行失败');
     process.exit(1);
   }
 
   console.log('\n📤 推送代码到远程仓库...');
-  console.log('   命令: git push --follow-tags origin main');
   if (!runCommand('git', ['push', '--follow-tags', 'origin', 'main'])) {
     console.error('❌ git push 失败');
     process.exit(1);
