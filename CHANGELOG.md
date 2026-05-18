@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://gitee.com/siriussupreme/uuid-nanoid/compare/v1.1.1...v1.1.2) (2026-05-18)
+
+
+### Features
+
+* 发布时同时推送到 gitee 和 github ([0e5c13a](https://gitee.com/siriussupreme/uuid-nanoid/commit/0e5c13a92093fe701ba5ac20c9446a6b0eab9634))
+
 ### [1.1.1](https://gitee.com/siriussupreme/uuid-nanoid/compare/v1.1.0...v1.1.1) (2026-05-18)
 
 
