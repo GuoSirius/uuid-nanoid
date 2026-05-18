@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/your-username/uuid-nanoid/compare/v1.2.1...v1.3.0) (2026-05-18)
+
+
+### Features
+
+* 添加 CommonJS 和 ES Module 格式支持 ([425657e](https://github.com/your-username/uuid-nanoid/commit/425657ee92ac65b912a209a682a928ac2194935e))
+* 添加压缩版和未压缩版的构建输出 ([ad6cd8a](https://github.com/your-username/uuid-nanoid/commit/ad6cd8a993fd86bf68d47f5125d8bd14ad2fe588))
+
+
+### Documentation
+
+* 添加 npm 包安装和使用说明 ([6cb64db](https://github.com/your-username/uuid-nanoid/commit/6cb64db58adb9beb18caf70188488e39d3236f5d))
+
 ### [1.2.1](https://github.com/your-username/uuid-nanoid/compare/v1.2.0...v1.2.1) (2026-05-18)
 
 
