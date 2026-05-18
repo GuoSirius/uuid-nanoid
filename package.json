@@ -14,7 +14,8 @@
     "release": "node scripts/release.js",
     "release:major": "standard-version --release-as major",
     "release:minor": "standard-version --release-as minor",
-    "release:patch": "standard-version --release-as patch"
+    "release:patch": "standard-version --release-as patch",
+    "prepare": "husky"
   },
   "keywords": [
     "uuid",
@@ -39,9 +40,12 @@
     "uuid": "^14.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.0.1",
+    "@commitlint/config-conventional": "^21.0.1",
     "@rollup/plugin-commonjs": "^29.0.2",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
+    "husky": "^9.1.7",
     "inquirer": "^13.4.3",
     "rollup": "^4.60.4",
     "rollup-plugin-polyfill-node": "^0.13.0",
