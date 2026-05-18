@@ -55,14 +55,33 @@ jobs:
           TAG_NAME=${{ github.ref_name }}
           VERSION=${TAG_NAME#v}
           
-          echo "Extracting release notes for version $VERSION"
+          echo "Tag: $TAG_NAME"
+          echo "Version: $VERSION"
           
-          RELEASE_NOTE=$(awk -v ver="$VERSION" '
-            BEGIN { p=0; }
-            /^###? \[?' ver '\]?/ { p=1; next; }
-            /^###? \[?v/ && p==1 { exit; }
-            p==1 { print; }
-          ' CHANGELOG.md | head -50)
+          START=$(grep -n "^### \[$VERSION" CHANGELOG.md | head -1 | cut -d: -f1)
+          echo "Start line: $START"
+          
+          if [ -z "$START" ]; then
+            echo "RELEASE_NOTE=No release notes found for version $VERSION"
+            echo "RELEASE_NOTE=No release notes found for version $VERSION" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          END=$(sed -n "$((START+1)),$ p" CHANGELOG.md | grep -n "^### \[" | head -1 | cut -d: -f1)
+          
+          if [ -z "$END" ]; then
+            END=100
+          else
+            END=$((START + END))
+          fi
+          
+          echo "End line: $END"
+          
+          RELEASE_NOTE=$(sed -n "$((START+1)),$((END-1))p" CHANGELOG.md)
+          
+          echo "=== Extracted release notes ==="
+          echo "$RELEASE_NOTE"
+          echo "=== End release notes ==="
           
           echo "RELEASE_NOTE<<EOF" >> $GITHUB_OUTPUT
           echo "$RELEASE_NOTE" >> $GITHUB_OUTPUT
@@ -73,7 +92,8 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
-          body: ${{ steps.release_notes.outputs.RELEASE_NOTE }}
+          body: |
+            ${{ steps.release_notes.outputs.RELEASE_NOTE }}
           draft: false
           prerelease: false
 
