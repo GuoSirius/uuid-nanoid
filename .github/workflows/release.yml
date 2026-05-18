@@ -35,8 +35,34 @@ jobs:
       - name: Verify build output
         run: ls -la dist/
 
-  publish:
+  create_release:
     needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          TAG_NAME=${{ github.ref_name }}
+          echo "RELEASE_NOTE=$(cat CHANGELOG.md | awk -v tag="$TAG_NAME" '/^## \[?'"$TAG_NAME"'/?/{p=1;next}/^## \[?v/{exit}p' | head -100)" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: ${{ steps.release_notes.outputs.RELEASE_NOTE }}
+          draft: false
+          prerelease: false
+
+  publish:
+    needs: [build, create_release]
     runs-on: ubuntu-latest
     if: (github.event_name == 'release' && github.event.action == 'created') || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v'))
     
