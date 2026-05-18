@@ -3,8 +3,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
 
-const production = process.env.NODE_ENV === 'production';
-
 const config = {
   input: 'src/index.js',
   plugins: [
@@ -14,38 +12,41 @@ const config = {
     resolve({
       browser: true
     }),
-    commonjs(),
-    production && terser()
+    commonjs()
   ]
 };
+
+const createOutput = (file, format, name, minify = false) => ({
+  file,
+  format,
+  name,
+  exports: 'named',
+  plugins: minify ? [terser()] : []
+});
 
 export default [
   // UMD 格式（浏览器）
   {
     ...config,
-    output: {
-      file: 'dist/uuid-nanoid.umd.js',
-      format: 'umd',
-      name: 'UUIDNanoID',
-      exports: 'named'
-    }
+    output: [
+      createOutput('dist/uuid-nanoid.umd.js', 'umd', 'UUIDNanoID', false),
+      createOutput('dist/uuid-nanoid.umd.min.js', 'umd', 'UUIDNanoID', true)
+    ]
   },
   // CommonJS 格式（Node.js）
   {
     ...config,
-    output: {
-      file: 'dist/uuid-nanoid.cjs',
-      format: 'cjs',
-      exports: 'named'
-    }
+    output: [
+      createOutput('dist/uuid-nanoid.cjs', 'cjs', 'UUIDNanoID', false),
+      createOutput('dist/uuid-nanoid.cjs.min.js', 'cjs', 'UUIDNanoID', true)
+    ]
   },
   // ES Module 格式（现代打包工具）
   {
     ...config,
-    output: {
-      file: 'dist/uuid-nanoid.esm.js',
-      format: 'es',
-      exports: 'named'
-    }
+    output: [
+      createOutput('dist/uuid-nanoid.esm.js', 'es', 'UUIDNanoID', false),
+      createOutput('dist/uuid-nanoid.esm.min.js', 'es', 'UUIDNanoID', true)
+    ]
   }
 ];
