@@ -40,14 +40,14 @@ npm run build
 <body>
     <script>
         // 生成 NanoID
-        const nanoId = UuidNanoId.nanoid();
+        const nanoId = UUIDNanoID.nanoid();
         
         // 生成 UUID v4
-        const uuid = UuidNanoId.uuidv4();
+        const uuid = UUIDNanoID.uuidv4();
         
         // 使用模块
-        const customNano = UuidNanoId.NanoID.nanoid(10);
-        const uuidV3 = UuidNanoId.UUID.v3('test', UuidNanoId.UUID.v3.DNS);
+        const customNano = UUIDNanoID.NanoID.nanoid(10);
+        const uuidV3 = UUIDNanoID.UUID.v3('test', UUIDNanoID.UUID.v3.DNS);
     </script>
 </body>
 </html>
@@ -59,20 +59,20 @@ npm run build
 
 | 方法 | 说明 | 示例 |
 |------|------|------|
-| `nanoid([size])` | 生成 NanoID | `UuidNanoId.nanoid()` |
-| `NanoID.nanoid([size])` | 同上 | `UuidNanoId.NanoID.nanoid(10)` |
-| `NanoID.customAlphabet(alphabet, [size])` | 自定义字符集 | `UuidNanoId.NanoID.customAlphabet('ABC', 8)()` |
+| `nanoid([size])` | 生成 NanoID | `UUIDNanoID.nanoid()` |
+| `NanoID.nanoid([size])` | 同上 | `UUIDNanoID.NanoID.nanoid(10)` |
+| `NanoID.customAlphabet(alphabet, [size])` | 自定义字符集 | `UUIDNanoID.NanoID.customAlphabet('ABC', 8)()` |
 
 ### UUID
 
 | 方法 | 说明 | 示例 |
 |------|------|------|
-| `uuidv4()` | 生成 UUID v4 | `UuidNanoId.uuidv4()` |
-| `UUID.v3(value, namespace)` | 生成 UUID v3 | `UuidNanoId.UUID.v3('test', UuidNanoId.UUID.v3.DNS)` |
-| `UUID.v5(value, namespace)` | 生成 UUID v5 | `UuidNanoId.UUID.v5('test', UuidNanoId.UUID.v5.DNS)` |
-| `UUID.NIL` | 空 UUID | `UuidNanoId.UUID.NIL` |
-| `UUID.parse(uuid)` | 解析 UUID | `UuidNanoId.UUID.parse(uuidStr)` |
-| `UUID.stringify(bytes)` | 序列化 UUID | `UuidNanoId.UUID.stringify(bytes)` |
+| `uuidv4()` | 生成 UUID v4 | `UUIDNanoID.uuidv4()` |
+| `UUID.v3(value, namespace)` | 生成 UUID v3 | `UUIDNanoID.UUID.v3('test', UUIDNanoID.UUID.v3.DNS)` |
+| `UUID.v5(value, namespace)` | 生成 UUID v5 | `UUIDNanoID.UUID.v5('test', UUIDNanoID.UUID.v5.DNS)` |
+| `UUID.NIL` | 空 UUID | `UUIDNanoID.UUID.NIL` |
+| `UUID.parse(uuid)` | 解析 UUID | `UUIDNanoID.UUID.parse(uuidStr)` |
+| `UUID.stringify(bytes)` | 序列化 UUID | `UUIDNanoID.UUID.stringify(bytes)` |
 
 ## 浏览器兼容性
 
