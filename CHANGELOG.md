@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.1.10](https://github.com/your-username/uuid-nanoid/compare/v1.1.9...v1.1.10) (2026-05-18)
 
+
+### Chores
+
+* 将所有 UuidNanoId 改为 UUIDNanoID ([b62e741](https://github.com/your-username/uuid-nanoid/commit/b62e741))
+
 ### [1.1.9](https://github.com/your-username/uuid-nanoid/compare/v1.1.8...v1.1.9) (2026-05-18)
 
 
