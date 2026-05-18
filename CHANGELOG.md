@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.6](https://github.com/your-username/uuid-nanoid/compare/v1.1.5...v1.1.6) (2026-05-18)
+
+
+### Features
+
+* 添加完整的 npm 发布配置 ([1f44c1a](https://github.com/your-username/uuid-nanoid/commit/1f44c1ab0adb4a72f508e91cf5eadf55e5c12cb2))
+
+
+### Bug Fixes
+
+* 添加 GitHub Actions 权限配置以允许创建 Release ([5df1a37](https://github.com/your-username/uuid-nanoid/commit/5df1a37848328de26c3e03df7e3072c819713c94))
+
 ### [1.1.5](https://gitee.com/siriussupreme/uuid-nanoid/compare/v1.1.4...v1.1.5) (2026-05-18)
 
 
