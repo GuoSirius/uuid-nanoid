@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.9](https://github.com/your-username/uuid-nanoid/compare/v1.1.8...v1.1.9) (2026-05-18)
+
+
+### Chores
+
+* change UUIDNanoID ([e588a10](https://github.com/your-username/uuid-nanoid/commit/e588a10fa7a4db5fabba67a933f8117aaaf95f7d))
+
 ### [1.1.8](https://github.com/your-username/uuid-nanoid/compare/v1.1.7...v1.1.8) (2026-05-18)
 
 
