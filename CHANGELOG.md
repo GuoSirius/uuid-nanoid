@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/GuoSirius/uuid-nanoid/compare/v1.5.1...v1.5.2) (2026-05-18)
+
+
+### Bug Fixes
+
+* 修复 README.md 和 CHANGELOG.md 的乱码问题 ([8198f77](https://github.com/GuoSirius/uuid-nanoid/commit/8198f779a7fe8db5fae9aedaba9ff927e50fae03))
+
 ### [1.5.1](https://github.com/GuoSirius/uuid-nanoid/compare/v1.5.0...v1.5.1) (2026-05-18)
 
 
