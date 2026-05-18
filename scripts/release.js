@@ -142,15 +142,21 @@ async function main() {
   }
 
   console.log('\n📤 推送代码到远程仓库...');
+  
+  console.log('   推送至 origin (gitee)...');
   if (!runCommand('git', ['push', '--follow-tags', 'origin', 'main'])) {
-    console.error('❌ git push 失败');
-    process.exit(1);
+    console.error('❌ 推送至 origin 失败');
+  }
+  
+  console.log('   推送至 github...');
+  if (!runCommand('git', ['push', '--follow-tags', 'github', 'main'])) {
+    console.error('❌ 推送至 github 失败');
   }
 
   console.log('\n🎉 发布成功！');
   console.log(`✅ 版本已更新: ${currentVersion} → ${targetVersion}`);
   console.log('✅ Changelog 已更新');
-  console.log('✅ Tag 已创建并推送');
+  console.log('✅ Tag 已创建并推送至所有远程仓库');
 }
 
 main().catch((err) => {
