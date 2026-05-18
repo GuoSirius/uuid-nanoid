@@ -2,6 +2,9 @@
 
 一个用于浏览器环境的 UUID 和 NanoID 生成器库，提供 UMD 格式打包，开箱即用。
 
+[![npm](https://img.shields.io/npm/v/uuid-nanoid)](https://www.npmjs.com/package/uuid-nanoid)
+[![npm](https://img.shields.io/npm/dt/uuid-nanoid)](https://www.npmjs.com/package/uuid-nanoid)
+
 ## 特性
 
 - 🚀 **UMD 格式** - 兼容 AMD、CommonJS 和全局变量
@@ -15,8 +18,13 @@
 ### npm 安装
 
 ```bash
-npm install
-npm run build
+npm install uuid-nanoid
+```
+
+### yarn 安装
+
+```bash
+yarn add uuid-nanoid
 ```
 
 ### 直接使用
@@ -29,7 +37,7 @@ npm run build
 
 ## 使用方法
 
-### 基础示例
+### 在浏览器中直接使用
 
 ```html
 <!DOCTYPE html>
@@ -51,6 +59,26 @@ npm run build
     </script>
 </body>
 </html>
+```
+
+### 在 Node.js/ESM 项目中使用
+
+```javascript
+// ESM 导入
+import UUIDNanoID from 'uuid-nanoid';
+
+// CommonJS 导入
+const UUIDNanoID = require('uuid-nanoid');
+
+// 生成 NanoID
+const nanoId = UUIDNanoID.nanoid();
+
+// 生成 UUID v4
+const uuid = UUIDNanoID.uuidv4();
+
+// 使用模块
+const customNano = UUIDNanoID.NanoID.nanoid(10);
+const uuidV3 = UUIDNanoID.UUID.v3('test', UUIDNanoID.UUID.v3.DNS);
 ```
 
 ## API 文档
