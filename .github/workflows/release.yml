@@ -58,26 +58,23 @@ jobs:
           echo "Tag: $TAG_NAME"
           echo "Version: $VERSION"
           
-          START=$(grep -n "^##\{2,3\} \[$VERSION" CHANGELOG.md | head -1 | cut -d: -f1)
-          echo "Start line: $START"
+          awk -v ver="$VERSION" '
+            BEGIN { in_section = 0; print_section = 0 }
+            /^#{2,3} \[/ {
+              if (print_section) exit
+              if ($0 ~ "\\[" ver "]") {
+                print_section = 1
+                next
+              }
+            }
+            print_section { print }
+          ' CHANGELOG.md > /tmp/release_notes.txt
           
-          if [ -z "$START" ]; then
-            echo "RELEASE_NOTE=No release notes found for version $VERSION"
-            echo "RELEASE_NOTE=No release notes found for version $VERSION" >> $GITHUB_OUTPUT
-            exit 0
+          RELEASE_NOTE=$(cat /tmp/release_notes.txt | head -100)
+          
+          if [ -z "$RELEASE_NOTE" ]; then
+            RELEASE_NOTE="No release notes found for version $VERSION"
           fi
-          
-          END=$(sed -n "$((START+1)),$ p" CHANGELOG.md | grep -n "^##\{2,3\} \[" | head -1 | cut -d: -f1)
-          
-          if [ -z "$END" ]; then
-            END=100
-          else
-            END=$((START + END))
-          fi
-          
-          echo "End line: $END"
-          
-          RELEASE_NOTE=$(sed -n "$((START+1)),$((END-1))p" CHANGELOG.md)
           
           echo "=== Extracted release notes ==="
           echo "$RELEASE_NOTE"
