@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/your-username/uuid-nanoid/compare/v1.4.1...v1.5.0) (2026-05-18)
+
+
+### Bug Fixes
+
+* 完善NanoID类型定义，添加customRandom、random和urlAlphabet ([d1a48b2](https://github.com/your-username/uuid-nanoid/commit/d1a48b2b32e41f119d8488e90b39a45aab15eb68))
+* 完善UUID类型定义，添加v1/v6/v7等缺失的方法 ([3c85af9](https://github.com/your-username/uuid-nanoid/commit/3c85af95dbcc0e4f2d2bebf8d649ac50df0d9498))
+
 ### [1.4.1](https://github.com/your-username/uuid-nanoid/compare/v1.4.0...v1.4.1) (2026-05-18)
 
 
