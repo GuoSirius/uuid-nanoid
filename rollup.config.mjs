@@ -10,7 +10,7 @@ export default {
   output: {
     file: 'dist/uuid-nanoid.umd.js',
     format: 'umd',
-    name: 'UuidNanoId',
+    name: 'UUIDNanoID',
     exports: 'named'
   },
   plugins: [
