@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.4](https://gitee.com/siriussupreme/uuid-nanoid/compare/v1.1.3...v1.1.4) (2026-05-18)
+
+
+### Bug Fixes
+
+* 让 publish 任务在推送 v* tag 时也执行 ([c1b3116](https://gitee.com/siriussupreme/uuid-nanoid/commit/c1b3116b4e57beec65431764759737fb94ecf3ae))
+
 ### [1.1.3](https://gitee.com/siriussupreme/uuid-nanoid/compare/v1.1.2...v1.1.3) (2026-05-18)
 
 
