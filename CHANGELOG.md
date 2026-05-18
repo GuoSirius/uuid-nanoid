@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/your-username/uuid-nanoid/compare/v1.2.0...v1.2.1) (2026-05-18)
+
+
+### Chores
+
+* 配置 husky 和 commitlint 实现提交信息校验 ([0b029d2](https://github.com/your-username/uuid-nanoid/commit/0b029d22e237b980626ab5422424e80b1e04d0ef))
+
 ## [1.2.0](https://github.com/your-username/uuid-nanoid/compare/v1.1.10...v1.2.0) (2026-05-18)
 
 
