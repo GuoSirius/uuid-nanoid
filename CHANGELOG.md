@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/your-username/uuid-nanoid/compare/v1.4.0...v1.4.1) (2026-05-18)
+
+
+### Bug Fixes
+
+* 使用 awk 提取 CHANGELOG 版本内容 ([59764d6](https://github.com/your-username/uuid-nanoid/commit/59764d6e00c8d2d604f8445ef39fc535febe710e))
+* 修复 CHANGELOG 版本标题匹配，移除闭合括号限制 ([2c92c14](https://github.com/your-username/uuid-nanoid/commit/2c92c1423ca46af34d4abafafe809c58474c5f66))
+
 ## [1.4.0](https://github.com/your-username/uuid-nanoid/compare/v1.3.0...v1.4.0) (2026-05-18)
 
 
