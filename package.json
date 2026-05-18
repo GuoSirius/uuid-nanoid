@@ -36,11 +36,11 @@
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/uuid-nanoid.git"
+    "url": "https://github.com/GuoSirius/uuid-nanoid.git"
   },
-  "homepage": "https://github.com/your-username/uuid-nanoid#readme",
+  "homepage": "https://github.com/GuoSirius/uuid-nanoid#readme",
   "bugs": {
-    "url": "https://github.com/your-username/uuid-nanoid/issues"
+    "url": "https://github.com/GuoSirius/uuid-nanoid/issues"
   },
   "dependencies": {
     "nanoid": "^5.1.11",
@@ -59,3 +59,4 @@
     "standard-version": "^9.5.0"
   }
 }
+
