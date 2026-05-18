@@ -58,7 +58,7 @@ jobs:
           echo "Tag: $TAG_NAME"
           echo "Version: $VERSION"
           
-          START=$(grep -n "^##\{2,3\} \[$VERSION\]" CHANGELOG.md | head -1 | cut -d: -f1)
+          START=$(grep -n "^##\{2,3\} \[$VERSION" CHANGELOG.md | head -1 | cut -d: -f1)
           echo "Start line: $START"
           
           if [ -z "$START" ]; then
