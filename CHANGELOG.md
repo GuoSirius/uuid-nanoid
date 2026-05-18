@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.5](https://gitee.com/siriussupreme/uuid-nanoid/compare/v1.1.4...v1.1.5) (2026-05-18)
+
+
+### Features
+
+* 添加自动创建 GitHub Release 的功能 ([ce88a25](https://gitee.com/siriussupreme/uuid-nanoid/commit/ce88a25af0416f2636112598e690460efa5f8a0b))
+
 ### [1.1.4](https://gitee.com/siriussupreme/uuid-nanoid/compare/v1.1.3...v1.1.4) (2026-05-18)
 
 
