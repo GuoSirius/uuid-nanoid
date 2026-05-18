@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.8](https://github.com/your-username/uuid-nanoid/compare/v1.1.7...v1.1.8) (2026-05-18)
+
+
+### Bug Fixes
+
+* 修复 CHANGELOG 版本匹配正则 ([2d79fc4](https://github.com/your-username/uuid-nanoid/commit/2d79fc49bb4936a3fc788ed18504973104c592c0))
+
 ### [1.1.7](https://github.com/your-username/uuid-nanoid/compare/v1.1.6...v1.1.7) (2026-05-18)
 
 
