@@ -87,6 +87,56 @@ npm run build
 - **nanoid**: ^5.1.11
 - **rollup**: ^4.60.4
 
+## 发布流程
+
+### 一键发布
+
+使用以下命令进行一键发布：
+
+```bash
+npm run release
+```
+
+发布脚本会自动：
+1. 检测未提交的更改并提示提交
+2. 询问版本升级类型（major/minor/patch/自定义）
+3. 自动更新版本号
+4. 生成/更新 CHANGELOG.md
+5. 创建 git tag
+6. 推送代码和 tag 到远程仓库
+
+### 快速发布命令
+
+```bash
+# 大版本升级 (1.x.x → 2.0.0)
+npm run release:major
+
+# 小版本升级 (1.0.x → 1.1.0)
+npm run release:minor
+
+# 补丁升级 (1.0.0 → 1.0.1)
+npm run release:patch
+```
+
+### 提交信息规范
+
+为了正确生成 changelog，请使用以下提交信息格式：
+
+| 类型 | 说明 | 示例 |
+|------|------|------|
+| `feat` | 新功能 | `feat: 添加 UUID v6 支持` |
+| `fix` | 修复漏洞 | `fix: 修复浏览器兼容性问题` |
+| `docs` | 文档更新 | `docs: 更新 API 文档` |
+| `chore` | 构建/工具相关 | `chore: 更新依赖` |
+| `refactor` | 代码重构 | `refactor: 优化性能` |
+| `test` | 测试相关 | `test: 添加单元测试` |
+
+### GitHub Actions
+
+项目已配置 GitHub Actions，自动执行以下流程：
+- **Push 到 main 分支**: 自动构建验证
+- **创建 Release**: 自动发布到 npm（需配置 NPM_TOKEN）
+
 ## License
 
 MIT
