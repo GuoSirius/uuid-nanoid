@@ -51,35 +51,27 @@ async function main() {
 
   if (checkUncommittedChanges()) {
     console.log('⚠️  检测到未提交的更改！');
-    const { commitChanges } = await prompt({
-      type: 'confirm',
-      name: 'commitChanges',
-      message: '是否先提交这些更改？',
-      default: true
+    
+    console.log('📝 自动执行 git add...');
+    if (!runCommand('git', ['add', '.'])) {
+      console.error('❌ git add 失败');
+      process.exit(1);
+    }
+
+    const { commitMessage } = await prompt({
+      type: 'input',
+      name: 'commitMessage',
+      message: '请输入提交信息：',
+      default: 'chore: prepare release'
     });
 
-    if (commitChanges) {
-      const { commitMessage } = await prompt({
-        type: 'input',
-        name: 'commitMessage',
-        message: '请输入提交信息：',
-        default: 'chore: prepare release'
-      });
-
-      console.log('\n📝 执行 git add...');
-      if (!runCommand('git', ['add', '.'])) {
-        console.error('❌ git add 失败');
-        process.exit(1);
-      }
-
-      console.log('📝 执行 git commit...');
-      if (!runCommand('git', ['commit', '-m', commitMessage])) {
-        console.error('❌ git commit 失败');
-        process.exit(1);
-      }
-    } else {
-      console.log('⚠️  用户选择跳过提交，继续发布流程...');
+    console.log('📝 执行 git commit...');
+    if (!runCommand('git', ['commit', '-m', commitMessage])) {
+      console.error('❌ git commit 失败');
+      process.exit(1);
     }
+  } else {
+    console.log('✅ 工作区干净，没有未提交的更改');
   }
 
   const majorVersion = getNextVersion(currentVersion, 'major');
@@ -130,12 +122,14 @@ async function main() {
   }
 
   console.log('\n📦 执行 standard-version...');
+  console.log(`   命令: npx ${args.join(' ')}`);
   if (!runCommand('npx', args)) {
     console.error('❌ standard-version 执行失败');
     process.exit(1);
   }
 
   console.log('\n📤 推送代码到远程仓库...');
+  console.log('   命令: git push --follow-tags origin main');
   if (!runCommand('git', ['push', '--follow-tags', 'origin', 'main'])) {
     console.error('❌ git push 失败');
     process.exit(1);
