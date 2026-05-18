@@ -87,7 +87,7 @@ async function main() {
   const patchVersion = getNextVersion(currentVersion, 'patch');
 
   const { releaseType } = await prompt({
-    type: 'list',
+    type: 'rawlist',
     name: 'releaseType',
     message: `请选择版本升级类型（当前版本: ${currentVersion}）：`,
     choices: [
