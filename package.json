@@ -1,19 +1,39 @@
 {
   "name": "uuid-nanoid",
   "version": "1.1.5",
-  "description": "",
-  "main": "index.js",
+  "description": "A browser-friendly UUID and NanoID generator library with UMD packaging",
+  "main": "dist/uuid-nanoid.umd.js",
+  "module": "dist/uuid-nanoid.umd.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
+    "build:prod": "NODE_ENV=production rollup -c rollup.config.mjs",
     "release": "node scripts/release.js",
     "release:major": "standard-version --release-as major",
     "release:minor": "standard-version --release-as minor",
     "release:patch": "standard-version --release-as patch"
   },
-  "keywords": [],
+  "keywords": [
+    "uuid",
+    "nanoid",
+    "unique-id",
+    "identifier",
+    "browser"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/uuid-nanoid.git"
+  },
+  "homepage": "https://github.com/your-username/uuid-nanoid#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/uuid-nanoid/issues"
+  },
   "dependencies": {
     "nanoid": "^5.1.11",
     "uuid": "^14.0.0"
@@ -21,6 +41,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^29.0.2",
     "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
     "inquirer": "^13.4.3",
     "rollup": "^4.60.4",
     "rollup-plugin-polyfill-node": "^0.13.0",
