@@ -28,6 +28,9 @@ declare module 'uuid-nanoid' {
   export namespace NanoID {
     function nanoid(size?: number): string;
     function customAlphabet(alphabet: string, size?: number): () => string;
+  function customRandom(alphabet: string, size: number, random: () => Uint8Array): () => string;
+  function random(bytes: number): Uint8Array;
+  const urlAlphabet: string;
   }
 
   const UUIDNanoID: {
