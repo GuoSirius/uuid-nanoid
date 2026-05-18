@@ -2,11 +2,20 @@ declare module 'uuid-nanoid' {
   export function nanoid(size?: number): string;
   export function uuidv4(): string;
   export namespace UUID {
-    function v3(value: string, namespace: string): string;
-    function v5(value: string, namespace: string): string;
+    function v1(options?: { node?: number[]; clockseq?: number; msecs?: number | Date; nsecs?: number }): string;
+    function v1ToV6(uuid: string): string;
+    function v3(value: string | Uint8Array, namespace: string): string;
+    function v4(options?: { random?: number[]; rng?: () => number[] }): string;
+    function v5(value: string | Uint8Array, namespace: string): string;
+    function v6(options?: { node?: number[]; clockseq?: number; msecs?: number | Date; nsecs?: number }): string;
+    function v6ToV1(uuid: string): string;
+    function v7(options?: { msecs?: number | Date; random?: number[] }): string;
     const NIL: string;
+    const MAX: string;
     function parse(uuid: string): Uint8Array;
     function stringify(bytes: Uint8Array): string;
+    function validate(uuid: string): boolean;
+    function version(uuid: string): number;
     namespace v3 {
       const DNS: string;
       const URL: string;
