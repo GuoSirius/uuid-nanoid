@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.7](https://github.com/your-username/uuid-nanoid/compare/v1.1.6...v1.1.7) (2026-05-18)
+
+
+### Bug Fixes
+
+* 改进 Release 发布说明提取逻辑，只显示当前版本 ([3c9af69](https://github.com/your-username/uuid-nanoid/commit/3c9af69ad712d9510a8457217c50dba1f8b4d700))
+
 ### [1.1.6](https://github.com/your-username/uuid-nanoid/compare/v1.1.5...v1.1.6) (2026-05-18)
 
 
