@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://gitee.com/siriussupreme/uuid-nanoid/compare/v1.1.0...v1.1.1) (2026-05-18)
+
+
+### Bug Fixes
+
+* 修复 spawnSync 在 Windows PowerShell 中的执行问题 ([9a776e6](https://gitee.com/siriussupreme/uuid-nanoid/commit/9a776e67837448a8f72cff7f4869b9542deedfc1))
+
 ## [1.1.0](https://gitee.com/siriussupreme/uuid-nanoid/compare/v1.0.0...v1.1.0) (2026-05-18)
 
 
