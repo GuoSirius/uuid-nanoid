@@ -49,11 +49,24 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Generate release notes
+      - name: Extract release notes from CHANGELOG
         id: release_notes
         run: |
           TAG_NAME=${{ github.ref_name }}
-          echo "RELEASE_NOTE=$(cat CHANGELOG.md | awk -v tag="$TAG_NAME" '/^## \[?'"$TAG_NAME"'/?/{p=1;next}/^## \[?v/{exit}p' | head -100)" >> $GITHUB_OUTPUT
+          VERSION=${TAG_NAME#v}
+          
+          echo "Extracting release notes for version $VERSION"
+          
+          RELEASE_NOTE=$(awk -v ver="$VERSION" '
+            BEGIN { p=0; }
+            /^###? \[?' ver '\]?/ { p=1; next; }
+            /^###? \[?v/ && p==1 { exit; }
+            p==1 { print; }
+          ' CHANGELOG.md | head -50)
+          
+          echo "RELEASE_NOTE<<EOF" >> $GITHUB_OUTPUT
+          echo "$RELEASE_NOTE" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
