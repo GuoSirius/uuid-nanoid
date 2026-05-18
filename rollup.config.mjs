@@ -5,14 +5,8 @@ import nodePolyfills from 'rollup-plugin-polyfill-node';
 
 const production = process.env.NODE_ENV === 'production';
 
-export default {
+const config = {
   input: 'src/index.js',
-  output: {
-    file: 'dist/uuid-nanoid.umd.js',
-    format: 'umd',
-    name: 'UUIDNanoID',
-    exports: 'named'
-  },
   plugins: [
     nodePolyfills({
       include: ['node:crypto']
@@ -24,3 +18,34 @@ export default {
     production && terser()
   ]
 };
+
+export default [
+  // UMD 格式（浏览器）
+  {
+    ...config,
+    output: {
+      file: 'dist/uuid-nanoid.umd.js',
+      format: 'umd',
+      name: 'UUIDNanoID',
+      exports: 'named'
+    }
+  },
+  // CommonJS 格式（Node.js）
+  {
+    ...config,
+    output: {
+      file: 'dist/uuid-nanoid.cjs',
+      format: 'cjs',
+      exports: 'named'
+    }
+  },
+  // ES Module 格式（现代打包工具）
+  {
+    ...config,
+    output: {
+      file: 'dist/uuid-nanoid.esm.js',
+      format: 'es',
+      exports: 'named'
+    }
+  }
+];
