@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UUID & NanoID UMD Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #4a5568;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        h2 {
+            color: #2d3748;
+            margin-top: 25px;
+            font-size: 1.2rem;
+            background: #f7fafc;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+        .result {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            margin: 10px 0;
+            border-left: 4px solid #667eea;
+        }
+        .success {
+            color: #22c55e;
+            font-weight: bold;
+        }
+        .error {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .test-item {
+            margin: 15px 0;
+        }
+        .method-name {
+            color: #667eea;
+            font-weight: 600;
+        }
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .api-list {
+            list-style: none;
+            padding: 0;
+        }
+        .api-list li {
+            padding: 8px 12px;
+            background: #f7fafc;
+            margin: 5px 0;
+            border-radius: 6px;
+            border-left: 3px solid #718096;
+        }
+    </style>
+    <script src="dist/uuid-nanoid.umd.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>UUID & NanoID UMD Test</h1>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function addTest(title, code, result) {
+            var container = document.getElementById('result');
+            container.innerHTML += `
+                <div class="test-item">
+                    <h2>${title}</h2>
+                    <div class="code-block">${code}</div>
+                    <div class="result">${result}</div>
+                </div>
+            `;
+        }
+
+        function addSuccess(message) {
+            var container = document.getElementById('result');
+            container.innerHTML += `<p class="success">✓ ${message}</p>`;
+        }
+
+        function addError(message, stack) {
+            var container = document.getElementById('result');
+            container.innerHTML += `
+                <p class="error">✗ Error: ${message}</p>
+                ${stack ? `<pre>${stack}</pre>` : ''}
+            `;
+        }
+
+        try {
+            // Test 1: Basic nanoid generation
+            var nanoResult = UuidNanoId.nanoid();
+            addTest('NanoID Basic', 'UuidNanoId.nanoid()', nanoResult);
+
+            // Test 2: Custom length nanoid
+            var nanoCustomLength = UuidNanoId.nanoid(10);
+            addTest('NanoID Custom Length', 'UuidNanoId.nanoid(10)', nanoCustomLength);
+
+            // Test 3: UUID v4
+            var uuidV4Result = UuidNanoId.uuidv4();
+            addTest('UUID v4', 'UuidNanoId.uuidv4()', uuidV4Result);
+
+            // Test 4: UUID v3 with DNS namespace
+            var uuidV3Result = UuidNanoId.UUID.v3('test-string', UuidNanoId.UUID.v3.DNS);
+            addTest('UUID v3 (DNS namespace)', "UuidNanoId.UUID.v3('test-string', UuidNanoId.UUID.v3.DNS)", uuidV3Result);
+
+            // Test 5: UUID v3 with URL namespace
+            var uuidV3UrlResult = UuidNanoId.UUID.v3('test-string', UuidNanoId.UUID.v3.URL);
+            addTest('UUID v3 (URL namespace)', "UuidNanoId.UUID.v3('test-string', UuidNanoId.UUID.v3.URL)", uuidV3UrlResult);
+
+            // Test 6: UUID v5 with DNS namespace
+            var uuidV5Result = UuidNanoId.UUID.v5('test-string', UuidNanoId.UUID.v5.DNS);
+            addTest('UUID v5 (DNS namespace)', "UuidNanoId.UUID.v5('test-string', UuidNanoId.UUID.v5.DNS)", uuidV5Result);
+
+            // Test 7: UUID v5 with URL namespace
+            var uuidV5UrlResult = UuidNanoId.UUID.v5('test-string', UuidNanoId.UUID.v5.URL);
+            addTest('UUID v5 (URL namespace)', "UuidNanoId.UUID.v5('test-string', UuidNanoId.UUID.v5.URL)", uuidV5UrlResult);
+
+            // Test 8: UUID NIL
+            addTest('UUID NIL', 'UuidNanoId.UUID.NIL', UuidNanoId.UUID.NIL);
+
+            // Test 9: UUID parse and stringify
+            var parsed = UuidNanoId.UUID.parse(uuidV4Result);
+            var stringified = UuidNanoId.UUID.stringify(parsed);
+            addTest('UUID Parse & Stringify', `var parsed = UuidNanoId.UUID.parse(uuid);\nUuidNanoId.UUID.stringify(parsed)`, stringified);
+
+            // Test 10: NanoID module exports
+            var customNano = UuidNanoId.NanoID.nanoid(8);
+            addTest('NanoID Module', 'UuidNanoId.NanoID.nanoid(8)', customNano);
+
+            // Test 11: Custom alphabet
+            if (UuidNanoId.NanoID.customAlphabet) {
+                var customAlphabetFn = UuidNanoId.NanoID.customAlphabet('ABCDEFG', 8);
+                var customResult = customAlphabetFn();
+                addTest('NanoID Custom Alphabet', `var custom = UuidNanoId.NanoID.customAlphabet('ABCDEFG', 8);\ncustom()`, customResult);
+            }
+
+            // Show API summary
+            document.getElementById('result').innerHTML += `
+                <h2>📚 API Summary</h2>
+                <ul class="api-list">
+                    <li><span class="method-name">nanoid([size])</span> - Generate NanoID (default 21 chars)</li>
+                    <li><span class="method-name">uuidv4()</span> - Generate UUID v4</li>
+                    <li><span class="method-name">UUID.v3(value, namespace)</span> - Generate UUID v3</li>
+                    <li><span class="method-name">UUID.v4([options])</span> - Generate UUID v4</li>
+                    <li><span class="method-name">UUID.v5(value, namespace)</span> - Generate UUID v5</li>
+                    <li><span class="method-name">UUID.NIL</span> - Empty UUID constant</li>
+                    <li><span class="method-name">UUID.parse(uuid)</span> - Parse UUID string to bytes</li>
+                    <li><span class="method-name">UUID.stringify(bytes)</span> - Convert bytes to UUID string</li>
+                    <li><span class="method-name">NanoID.nanoid([size])</span> - Generate NanoID</li>
+                    <li><span class="method-name">NanoID.customAlphabet(alphabet, [size])</span> - Create custom NanoID generator</li>
+                </ul>
+            `;
+
+            addSuccess('All tests passed! ✓');
+            
+        } catch (error) {
+            addError(error.message, error.stack);
+        }
+    </script>
+</body>
+</html>
