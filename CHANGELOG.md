@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.3](https://github.com/GuoSirius/uuid-nanoid/compare/v1.5.2...v1.5.3) (2026-05-19)
+
+
+### Chores
+
+* upload dist folder to GitHub Release ([657308c](https://github.com/GuoSirius/uuid-nanoid/commit/657308ca42d36fc84e4c51292f42453ca3f2a270))
+
 ### [1.5.2](https://github.com/GuoSirius/uuid-nanoid/compare/v1.5.1...v1.5.2) (2026-05-18)
 
 
