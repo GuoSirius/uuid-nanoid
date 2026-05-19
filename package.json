@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
-    "build:prod": "NODE_ENV=production rollup -c rollup.config.mjs",
+    "build:prod": "cross-env NODE_ENV=production rollup -c rollup.config.mjs",
     "release": "node scripts/release.js",
     "release:major": "standard-version --release-as major",
     "release:minor": "standard-version --release-as minor",
@@ -52,6 +52,7 @@
     "@rollup/plugin-commonjs": "^29.0.2",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
+    "cross-env": "^10.1.0",
     "husky": "^9.1.7",
     "inquirer": "^13.4.3",
     "rollup": "^4.60.4",
