@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.4](https://github.com/GuoSirius/uuid-nanoid/compare/v1.5.3...v1.5.4) (2026-05-19)
+
+
+### Bug Fixes
+
+* update dist files pattern for GitHub Release ([31840c9](https://github.com/GuoSirius/uuid-nanoid/commit/31840c9324127817362c5009237bb3ce0fa8b333))
+
+
+### Chores
+
+* add cross-env dependency ([028eefc](https://github.com/GuoSirius/uuid-nanoid/commit/028eefca8beae97b46d0a92a1c8c22d24571cce3))
+
 ### [1.5.3](https://github.com/GuoSirius/uuid-nanoid/compare/v1.5.2...v1.5.3) (2026-05-19)
 
 

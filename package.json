@@ -1,6 +1,6 @@
 {
   "name": "uuid-nanoid",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "A browser-friendly UUID and NanoID generator library with UMD packaging",
   "main": "dist/uuid-nanoid.cjs",
   "module": "dist/uuid-nanoid.esm.js",
