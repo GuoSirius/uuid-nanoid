@@ -108,8 +108,7 @@ jobs:
             ${{ steps.release_notes.outputs.RELEASE_NOTE }}
           draft: false
           prerelease: false
-          files: |
-            dist/
+          files: dist/*
 
   publish:
     needs: [build, create_release]
