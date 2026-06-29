@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.5](https://github.com/GuoSirius/uuid-nanoid/compare/v1.5.4...v1.5.5) (2026-06-29)
+
+
+### Features
+
+* upgrade to dual CJS/ESM package with proper exports field ([a1070e0](https://github.com/GuoSirius/uuid-nanoid/commit/a1070e023bbff9aec35b7d3a44febfe55ea772a2))
+
+
+### Bug Fixes
+
+* migrate release script to ESM for inquirer v14 compatibility ([f13801e](https://github.com/GuoSirius/uuid-nanoid/commit/f13801e0343c2c7e25595a74eedce5dc4263561f))
+* revert UMD extension back to .js ([442a132](https://github.com/GuoSirius/uuid-nanoid/commit/442a132ffb9b62b891a323fcb673f05252a906e8))
+
+
+### Refactor
+
+* switch to type=module, clean dist before build, unify output extensions ([03b0fe5](https://github.com/GuoSirius/uuid-nanoid/commit/03b0fe5fe9a43440bf8abcf995ae5f1e62825637))
+
 ### [1.5.4](https://github.com/GuoSirius/uuid-nanoid/compare/v1.5.3...v1.5.4) (2026-05-19)
 
 
