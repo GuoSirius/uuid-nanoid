@@ -1,9 +1,7 @@
 import { spawnSync } from 'child_process';
-import { createRequire } from 'module';
 import { createPromptModule } from 'inquirer';
 import fs from 'fs';
 
-const require = createRequire(import.meta.url);
 const prompt = createPromptModule();
 
 function runCommand(cmd, args = [], options = {}) {

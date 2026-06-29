@@ -1,16 +1,16 @@
 {
   "name": "uuid-nanoid",
   "version": "1.5.4",
-  "description": "A browser-friendly UUID and NanoID generator library with UMD packaging",
+  "description": "A browser-friendly UUID and NanoID generator library",
   "main": "dist/uuid-nanoid.cjs",
-  "module": "dist/uuid-nanoid.esm.mjs",
-  "browser": "dist/uuid-nanoid.umd.js",
+  "module": "dist/uuid-nanoid.esm.js",
+  "browser": "dist/uuid-nanoid.umd.cjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/uuid-nanoid.esm.mjs"
+        "default": "./dist/uuid-nanoid.esm.js"
       },
       "require": {
         "types": "./dist/index.d.cts",
@@ -18,9 +18,9 @@
       },
       "browser": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/uuid-nanoid.umd.js"
+        "default": "./dist/uuid-nanoid.umd.cjs"
       },
-      "default": "./dist/uuid-nanoid.esm.mjs"
+      "default": "./dist/uuid-nanoid.esm.js"
     }
   },
   "sideEffects": false,
@@ -46,7 +46,7 @@
   ],
   "author": "",
   "license": "MIT",
-  "type": "commonjs",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/GuoSirius/uuid-nanoid.git"

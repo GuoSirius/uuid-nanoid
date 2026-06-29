@@ -9,9 +9,21 @@ import nodePolyfills from 'rollup-plugin-polyfill-node';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// 构建前清空 dist/
+function cleanDist() {
+  return {
+    name: 'clean-dist',
+    buildStart() {
+      const distDir = path.resolve(__dirname, 'dist');
+      if (fs.existsSync(distDir)) {
+        fs.rmSync(distDir, { recursive: true, force: true });
+        console.log('🧹 已清空 dist/');
+      }
+    }
+  };
+}
+
 // 构建结束后将类型声明文件 copy 到 dist/
-// .d.ts  -> 供 ESM / 现代打包工具使用
-// .d.cts -> 供 CJS（require）使用
 function copyDts() {
   return {
     name: 'copy-dts',
@@ -31,8 +43,6 @@ function copyDts() {
     }
   };
 }
-
-const isProd = process.env.NODE_ENV === 'production';
 
 const sharedPlugins = [
   nodePolyfills({
@@ -58,10 +68,13 @@ export default [
   // UMD 格式（浏览器 / CDN）
   {
     input: 'src/index.js',
-    plugins: [...sharedPlugins],
+    plugins: [
+      cleanDist(),
+      ...sharedPlugins
+    ],
     output: [
-      createOutput('dist/uuid-nanoid.umd.js', 'umd', 'UUIDNanoID', false),
-      createOutput('dist/uuid-nanoid.umd.min.js', 'umd', 'UUIDNanoID', true)
+      createOutput('dist/uuid-nanoid.umd.cjs', 'umd', 'UUIDNanoID', false),
+      createOutput('dist/uuid-nanoid.umd.min.cjs', 'umd', 'UUIDNanoID', true)
     ]
   },
 
@@ -76,17 +89,15 @@ export default [
   },
 
   // ES Module 格式（现代打包工具 / Node.js import）
-  // 使用 .mjs 扩展名，确保在 "type": "commonjs" 项目中也能被 Node.js 正确识别为 ESM
   {
     input: 'src/index.js',
     plugins: [
       ...sharedPlugins,
-      // 最后一个 bundle 构建完成后 copy 类型文件，只执行一次
       copyDts()
     ],
     output: [
-      createOutput('dist/uuid-nanoid.esm.mjs', 'es', 'UUIDNanoID', false),
-      createOutput('dist/uuid-nanoid.esm.min.mjs', 'es', 'UUIDNanoID', true)
+      createOutput('dist/uuid-nanoid.esm.js', 'es', 'UUIDNanoID', false),
+      createOutput('dist/uuid-nanoid.esm.min.js', 'es', 'UUIDNanoID', true)
     ]
   }
 ];
