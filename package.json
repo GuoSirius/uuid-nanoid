@@ -4,7 +4,7 @@
   "description": "A browser-friendly UUID and NanoID generator library",
   "main": "dist/uuid-nanoid.cjs",
   "module": "dist/uuid-nanoid.esm.js",
-  "browser": "dist/uuid-nanoid.umd.cjs",
+  "browser": "dist/uuid-nanoid.umd.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
@@ -18,7 +18,7 @@
       },
       "browser": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/uuid-nanoid.umd.cjs"
+        "default": "./dist/uuid-nanoid.umd.js"
       },
       "default": "./dist/uuid-nanoid.esm.js"
     }

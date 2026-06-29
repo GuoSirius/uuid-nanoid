@@ -73,8 +73,8 @@ export default [
       ...sharedPlugins
     ],
     output: [
-      createOutput('dist/uuid-nanoid.umd.cjs', 'umd', 'UUIDNanoID', false),
-      createOutput('dist/uuid-nanoid.umd.min.cjs', 'umd', 'UUIDNanoID', true)
+      createOutput('dist/uuid-nanoid.umd.js', 'umd', 'UUIDNanoID', false),
+      createOutput('dist/uuid-nanoid.umd.min.js', 'umd', 'UUIDNanoID', true)
     ]
   },
 
