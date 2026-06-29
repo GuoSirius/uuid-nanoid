@@ -1,8 +1,10 @@
-const { spawnSync } = require('child_process');
-const inquirer = require('inquirer');
-const fs = require('fs');
+import { spawnSync } from 'child_process';
+import { createRequire } from 'module';
+import { createPromptModule } from 'inquirer';
+import fs from 'fs';
 
-const prompt = inquirer.createPromptModule();
+const require = createRequire(import.meta.url);
+const prompt = createPromptModule();
 
 function runCommand(cmd, args = [], options = {}) {
   console.log(`   执行: ${cmd} ${args.join(' ')}`);
@@ -34,7 +36,7 @@ function checkUncommittedChanges() {
 }
 
 function getCurrentVersion() {
-  const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+  const pkg = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf-8'));
   return pkg.version;
 }
 
